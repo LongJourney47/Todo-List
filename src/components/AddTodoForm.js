@@ -18,7 +18,7 @@ const AddTodoForm = (props) => {
     console.log(userData);
 
     setUserInput("");
-    props.onAddTodo(userData);
+    props.onAddTodo(userInput);
   };
 
   return (
