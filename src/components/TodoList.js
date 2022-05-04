@@ -1,7 +1,7 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
 
-const TodoList = ({ todoList }) => {
+const TodoList = ({ todoList, onRemoveTodo }) => {
   // console.log(props.todoList);
   // console.log(todo.id);
   return (
@@ -13,6 +13,7 @@ const TodoList = ({ todoList }) => {
             key={todo.id}
             title={todo.title}
             // date={"april 19th"} //used to illustrate the connection between files and use of props
+            onRemoveTodo={onRemoveTodo}
           />
         );
       })}

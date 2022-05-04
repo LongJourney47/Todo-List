@@ -4,7 +4,7 @@ import AddTodoForm from "./components/AddTodoForm";
 
 const useSemiPersistentState = () => {
   const [todoList, setTodoList] = useState(
-    JSON.parse(localStorage.getItem("savedTodoList"))
+    JSON.parse(localStorage.getItem("savedTodoList")) || []
   );
 
   useEffect(() => {
@@ -22,6 +22,10 @@ const App = () => {
     // console.log(newTodo);
   };
 
+  const removeTodo = (id) => {
+    setTodoList(todoList.filter((todo) => todo.id !== id));
+  };
+
   return (
     <>
       <header>
@@ -29,7 +33,7 @@ const App = () => {
       </header>
       <AddTodoForm onAddTodo={addTodo} />
       {/* <p>{addTodo}</p> */}
-      <TodoList todoList={todoList} />
+      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
     </>
   );
 };
