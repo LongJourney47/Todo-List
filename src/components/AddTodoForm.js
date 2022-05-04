@@ -1,43 +1,5 @@
 import React, { useState } from "react";
-
-// const AddTodoForm = (props) => {
-//   // const [todoTitle, setTodoTilte] = useState('')
-
-//   const [userInput, setUserInput] = useState("");
-
-//   const titleChangeHandler = (event) => {
-//     setUserInput(event.target.value);
-//   };
-
-//   const handleAddTodo = (event) => {
-//     event.preventDefault();
-
-//     // const todoTitle = event.target;
-//     const userData = {
-//       //   ...event,
-//       title: userInput,
-//     };
-//     console.log(userData);
-
-//     setUserInput("");
-//     props.onAddTodo(userInput);
-//   };
-
-//   return (
-//     <form onSubmit={handleAddTodo}>
-//       <label htmlFor="todoTitle">Title: </label>
-//       <input
-//         id="todoTitle"
-//         type="text "
-//         onChange={titleChangeHandler}
-//         value={userInput}
-//       ></input>
-//       <span>
-//         <button type="submit">Add</button>
-//       </span>
-//     </form>
-//   );
-// };
+import InputWithLabel from "../InputWithLabel";
 
 const AddTodoForm = ({ onAddTodo }) => {
   let [todoTitle, setTodoTitle] = useState("");
@@ -60,14 +22,20 @@ const AddTodoForm = ({ onAddTodo }) => {
 
   return (
     <form className="todoForm" onSubmit={handleAddTodo}>
-      <label htmlFor="todoTitle">Title: </label>
+      <InputWithLabel
+        todoTitle={todoTitle}
+        handleTitleChange={handleTitleChange}
+      >
+        Title:
+      </InputWithLabel>
+      {/* <label htmlFor="todoTitle">Title: </label>
       <input
         className="todoTitle"
         type="text"
         name="title"
         value={todoTitle}
         onChange={handleTitleChange}
-      ></input>
+      ></input> */}
       <span>
         <button type="submit">Add</button>
       </span>
