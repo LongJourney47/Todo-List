@@ -11,7 +11,7 @@ const TodoList = ({ todoList, onRemoveTodo }) => {
         return (
           <TodoListItem
             key={todo.id}
-            title={todo.title}
+            todo={todo}
             // date={"april 19th"} //used to illustrate the connection between files and use of props
             onRemoveTodo={onRemoveTodo}
           />
