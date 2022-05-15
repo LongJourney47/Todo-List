@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Description
-This is a Todo List project built on the assginments from CTD(Code The Dreamn) Advanced course for React.
+This is a Todo List project built on the assginments from CTD(Code The Dream) Advanced course for React.
 
 ## Available Scripts
 
