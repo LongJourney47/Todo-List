@@ -14,6 +14,8 @@ import AddTodoForm from "./components/AddTodoForm";
 //   return [todoList, setTodoList];
 // };
 
+const REACT_APP_AIRTABLE_BASE_ID = "app8D5JMgzKnuJTzw";
+
 const App = () => {
   // const [todoList, setTodoList] = useSemiPersistentState();
   // const [todoList, setTodoList] = useState(
@@ -22,22 +24,43 @@ const App = () => {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  // useEffect(() => {
+  //   new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve({
+  //         data: {
+  //           todoList: JSON.parse(localStorage.getItem("savedTodoList")) || [],
+  //         },
+  //       });
+  //     }, 2000);
+  //   })
+  //     .then((result) => {
+  //       setTodoList(result.data.todoList);
+  //       setIsLoading(false);
+  //     })
+  //     .catch((err) => {
+  //       console.log("error", err);
+  //     });
+  // }, []);
   useEffect(() => {
-    new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({
-          data: {
-            todoList: JSON.parse(localStorage.getItem("savedTodoList")) || [],
-          },
-        });
-      }, 2000);
-    })
-      .then((result) => {
-        setTodoList(result.data.todoList);
-        setIsLoading(false);
+    fetch(
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        },
+      }
+    )
+      .then((response) => {
+        return response.json();
       })
-      .catch((err) => {
-        console.log("error", err);
+      .then((data) => {
+        console.log(data.records);
+        setTodoList(data.records);
+        setIsLoading(false);
+        // .catch((err) => {
+        //   console.log("Error Identified", err);
+        // });
       });
   }, []);
 
