@@ -1,47 +1,14 @@
 import React, { useState, useEffect } from "react";
 import TodoList from "./components/TodoList";
 import AddTodoForm from "./components/AddTodoForm";
-
-// const useSemiPersistentState = () => {
-//   const [todoList, setTodoList] = useState(
-//     JSON.parse(localStorage.getItem("savedTodoList")) || []
-//   );
-
-//   useEffect(() => {
-//     localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-//   }, [todoList]);
-
-//   return [todoList, setTodoList];
-// };
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const REACT_APP_AIRTABLE_BASE_ID = "app8D5JMgzKnuJTzw";
 
 const App = () => {
-  // const [todoList, setTodoList] = useSemiPersistentState();
-  // const [todoList, setTodoList] = useState(
-  //   JSON.parse(localStorage.getItem("savedTodoList")) || []
-  // );
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       resolve({
-  //         data: {
-  //           todoList: JSON.parse(localStorage.getItem("savedTodoList")) || [],
-  //         },
-  //       });
-  //     }, 2000);
-  //   })
-  //     .then((result) => {
-  //       setTodoList(result.data.todoList);
-  //       setIsLoading(false);
-  //     })
-  //     .catch((err) => {
-  //       console.log("error", err);
-  //     });
-  // }, []);
   useEffect(() => {
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
@@ -58,9 +25,6 @@ const App = () => {
         console.log(data.records);
         setTodoList(data.records);
         setIsLoading(false);
-        // .catch((err) => {
-        //   console.log("Error Identified", err);
-        // });
       });
   }, []);
 
@@ -72,7 +36,6 @@ const App = () => {
 
   const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
-    // console.log(newTodo);
   };
 
   const removeTodo = (id) => {
@@ -81,18 +44,35 @@ const App = () => {
 
   const load = "Loading....";
   return (
-    <>
-      <header>
-        <h1>Todo List</h1>
-      </header>
-      <AddTodoForm onAddTodo={addTodo} />
-      {/* <p>{addTodo}</p> */}
-      {isLoading ? (
-        <p>{load}</p>
-      ) : (
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-      )}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <>
+              <header>
+                <h1>Todo List</h1>
+              </header>
+              <AddTodoForm onAddTodo={addTodo} />
+              {isLoading ? (
+                <p>Loading...</p>
+              ) : (
+                <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/new"
+          element={
+            <header>
+              <h1>New Todo List</h1>
+            </header>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
