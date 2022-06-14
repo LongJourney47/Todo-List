@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import TodoList from "./components/TodoList";
 import AddTodoForm from "./components/AddTodoForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import style from "./App.module.css";
 
 const REACT_APP_AIRTABLE_BASE_ID = "app8D5JMgzKnuJTzw";
 
@@ -51,8 +52,8 @@ const App = () => {
           path="/"
           element={
             <>
-              <header>
-                <h1>Todo List</h1>
+              <header className={style.Heading}>
+                <h1>To-do List</h1>
               </header>
               <AddTodoForm onAddTodo={addTodo} />
               {isLoading ? (

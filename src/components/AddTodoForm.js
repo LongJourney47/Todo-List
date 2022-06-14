@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import InputWithLabel from "../InputWithLabel";
+import style from "./AddTodoForm.module.css";
+import { IoAddSharp } from "react-icons/io5";
 
 const AddTodoForm = ({ onAddTodo }) => {
   let [todoTitle, setTodoTitle] = useState("");
@@ -21,7 +23,7 @@ const AddTodoForm = ({ onAddTodo }) => {
   };
 
   return (
-    <form className="todoForm" onSubmit={handleAddTodo}>
+    <form className={style.TodoForm} onSubmit={handleAddTodo}>
       <InputWithLabel
         todoTitle={todoTitle}
         handleTitleChange={handleTitleChange}
@@ -36,8 +38,12 @@ const AddTodoForm = ({ onAddTodo }) => {
         value={todoTitle}
         onChange={handleTitleChange}
       ></input> */}
+
       <span>
-        <button type="submit">Add</button>
+        <button type="submit" className={style.AddButton}>
+          {" "}
+          <IoAddSharp size="1.5em" />
+        </button>
       </span>
     </form>
   );

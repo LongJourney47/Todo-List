@@ -1,0 +1,23 @@
+.todoTitle[type="text"] {
+  width: 170px;
+  transition: ease-in-out, width 0.35s ease-in-out;
+  color: black;
+  border: none;
+  appearance: none;
+  border-radius: 3px;
+  font-size: 18px;
+  position: relative;
+}
+.todoTitle[type="text"]:focus {
+  width: 250px;
+  outline: none;
+  box-shadow: 3px 3px 3px rgba(252, 252, 252, 0.592);
+}
+/* 
+label .placeHolder {
+  font-size: 10px;
+  position: absolute;
+  left: 46em;
+
+  color: black;
+  /* top: 50%; */

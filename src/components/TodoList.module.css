@@ -1,0 +1,9 @@
+.MainTodoList {
+  text-align: center;
+  list-style-type: none;
+  background-color: #ffffff42;
+  padding: 1em;
+  margin: 1em 10em;
+  /* margin: 1em; */
+  border-radius: 10px;
+}

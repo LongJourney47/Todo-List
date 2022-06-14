@@ -1,0 +1,24 @@
+.TodoForm {
+  text-align: center;
+  background-color: #ffffff42;
+  margin: 1em 10em;
+  /* margin: 1em; */
+  padding: 1em;
+  border-radius: 10px;
+}
+
+.AddButton {
+  border: none;
+  background: none;
+  margin-left: 0.5em;
+  /* margin-top: 0.5em; */
+}
+
+.AddButton:hover {
+  background-color: rgba(255, 255, 255, 0.381);
+  border-radius: 5px;
+}
+
+.addIcon {
+  size: 2em;
+}
