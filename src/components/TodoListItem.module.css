@@ -1,0 +1,28 @@
+.ListItem {
+  background: none;
+  /* margin: 0em 8em; */
+  /* margin: 1em; */
+  padding: 1.5em;
+
+  border-top: 1px dashed #fff;
+}
+
+.ListItem:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.RemoveButton {
+  border: none;
+  background: none;
+  margin-left: 1em;
+}
+
+.RemoveButton:hover {
+  background-color: rgba(255, 255, 255, 0.381);
+  border-radius: 5px;
+}
+
+.checkBox[type="checkbox"] {
+  margin-right: 1em;
+  border-radius: 100%;
+}
