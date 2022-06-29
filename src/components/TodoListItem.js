@@ -1,23 +1,20 @@
 import React, { useState } from "react";
 import style from "./TodoListItem.module.css";
 import { IoRemove } from "react-icons/io5";
+import propTypes from "prop-types";
 
 const TodoListItem = ({ todo, onRemoveTodo }) => {
   // might want to use a true or false since the if statement will check for that
   // const [toggle, setToggle] = useState(false);
   // const handleToggleChange = () => {
-  //   // let toggleValue = event.target.value;
-  //   // setToggle(toggleValue);
+ 
   //   setToggle(!toggle);
   // };
+  TodoListItem.propTypes = {todo: propTypes.object , onRemoveTodo: propTypes.func}
 
   return (
     <li className={style.ListItem}>
-      {/* <input
-        type="checkbox"
-        className={style.checkBox}
-        onClick={handleToggleChange}
-      ></input> */}
+      
 
       {todo.fields.Title}
       <button

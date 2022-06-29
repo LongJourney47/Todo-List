@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import InputWithLabel from "../InputWithLabel";
+import InputWithLabel from "./InputWithLabel";
 import style from "./AddTodoForm.module.css";
 import { IoAddSharp } from "react-icons/io5";
+import propTypes from "prop-types";
 
 const AddTodoForm = ({ onAddTodo }) => {
   let [todoTitle, setTodoTitle] = useState("");
+
+  AddTodoForm.propTypes = {onAddTodo: propTypes.func}
 
   const handleTitleChange = (event) => {
     let newTodoTitle = event.target.value;
@@ -39,6 +42,8 @@ const AddTodoForm = ({ onAddTodo }) => {
         onChange={handleTitleChange}
       ></input> */}
 
+      
+
       <span>
         <button type="submit" className={style.AddButton}>
           {" "}
@@ -48,5 +53,7 @@ const AddTodoForm = ({ onAddTodo }) => {
     </form>
   );
 };
+
+
 
 export default AddTodoForm;
