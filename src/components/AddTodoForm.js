@@ -12,7 +12,7 @@ const AddTodoForm = ({ onAddTodo }) => {
   const handleTitleChange = (event) => {
     let newTodoTitle = event.target.value;
     setTodoTitle(newTodoTitle);
-    // console.log(todoTitle);
+
   };
 
   const handleAddTodo = (event) => {
@@ -33,16 +33,7 @@ const AddTodoForm = ({ onAddTodo }) => {
       >
         Title:
       </InputWithLabel>
-      {/* <label htmlFor="todoTitle">Title: </label>
-      <input
-        className="todoTitle"
-        type="text"
-        name="title"
-        value={todoTitle}
-        onChange={handleTitleChange}
-      ></input> */}
-
-      
+  
 
       <span>
         <button type="submit" className={style.AddButton}>
