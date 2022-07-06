@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import style from "./TodoListItem.module.css";
 import { IoRemove } from "react-icons/io5";
 import propTypes from "prop-types";

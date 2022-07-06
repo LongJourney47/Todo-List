@@ -1,9 +1,28 @@
 .MainTodoList {
   text-align: center;
   list-style-type: none;
+  
+  padding: .2em;
+
+}
+.listSection, .MainTodoList  {
   background-color: #ffffff42;
-  padding: 1em;
-  margin: 1em 10em;
-  /* margin: 1em; */
   border-radius: 10px;
+ 
+}
+
+.listSection {
+  
+  padding-top:2em;
+  margin: 1em 10em;
+}
+
+.sortButton button {
+  font-size: 25px;
+  
+}
+.sortButton {
+  display: flex;
+  justify-content: right;
+
 }
