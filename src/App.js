@@ -11,8 +11,8 @@ const App = () => {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [data, setData] = useState([]); 
-  const [toggle, setToggle] = useState(false); 
+  // const [data, setData] = useState([]); 
+  // const [toggle, setToggle] = useState(false); 
 
   const baseUrl = 'https://api.airtable.com/v0/'
   const table = 'Default'
@@ -30,35 +30,12 @@ const App = () => {
       .then((response) => {
         return response.json();
       })
-      //  ======== my approach right now
-      // .then((data) => {
-      //   const dataRecords = data.records;
-      //     console.log(dataRecords);
-      //   const sortByTitle = dataRecords.sort((objectA,objectB ) => {
-      //     console.log(objectA.Title)
-      //     if (objectA.fields.Title < objectB.fields.Title) {
-      //                   return -1;
-      //                 }
-      //                 if (objectA.fields.Title > objectB.fields.Title) {
-      //                   return 1;
-      //                 } else {
-      //                   return 0;
-      //                 }
-                    
 
-
-
-      //   })
-      //   console.log(sortByTitle)
-  
-      //     setTodoList(dataRecords);
-      //     setIsLoading(false);
-      //   });
       .then((data) => {
         const dataRecords = data.records;
           console.log(dataRecords);
         const sortByTitle = dataRecords.sort((objectA,objectB ) => {
-          console.log(objectA.Title)
+          // console.log(objectA.Title)
           if (objectA.fields.Title < objectB.fields.Title) {
                         return -1;
                       }
@@ -89,13 +66,71 @@ const App = () => {
     }
   }, [todoList]);
 
+
+
+
+
+
   const addTodo = (newTodo) => {
-    setTodoList([...todoList, newTodo]);
+ 
+
+    fetch(`${baseUrl}${process.env.REACT_APP_AIRTABLE_BASE_ID}/${table}`
+    ,
+    {
+      method: 'Post',
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+       'Content-Type': 'application/json'
+      },
+      body:JSON.stringify({
+        records: [
+          {
+            fields: {
+              Title: newTodo.title
+            }
+          }
+        ]
+      })
+    }
+  ).then((response) => {
+    return response.json();
+  }).then((data) => {
+    // data.records = the records you just added to airtable
+    const newTodoList = [...todoList, ...data.records]
+    setTodoList(newTodoList); // we need to append those records to our todo list
+});
   };
 
   const removeTodo = (id) => {
+    
+    // localStorage.removeItem("name of the item", JSON.stringify(todoList))
+
+    fetch(`${baseUrl}${process.env.REACT_APP_AIRTABLE_BASE_ID}/${table}?records[]=${id}`
+    ,
+    {
+  method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+     
+      },
+      
+      
+    }
+  ).then((response) => {
+    return response.json();
+  }).then((data) => {
+   
+   
     setTodoList(todoList.filter((todo) => todo.id !== id));
+})
+
+
   };
+
+
+
+  
+
 
 
 

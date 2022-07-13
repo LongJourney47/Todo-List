@@ -22,7 +22,7 @@ const AddTodoForm = ({ onAddTodo }) => {
       title: todoTitle,
       id: Date.now(),
     });
-    todoTitle = "";
+    setTodoTitle('')
   };
 
   return (
