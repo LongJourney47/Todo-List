@@ -7,9 +7,9 @@ const TodoListItem = ({ todo, onRemoveTodo }) => {
  
 const [complete,setComplete] = useState(false)
 
-const onCompleteHandler = (props) => {
+const onCompleteHandler = () => {
 
-//  const style = {}
+
 if (complete === true) {
   setComplete(false)
 } else {
