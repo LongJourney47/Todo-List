@@ -10,9 +10,7 @@ const TodoList = ({ todoList, onRemoveTodo,  }) => {
 
   return (
     <div className={style.listSection}>
-      <span className={style.sortButton}>
-       <button>Sort</button>
-       </span>
+     
        
       
     <ul className={style.MainTodoList}>
