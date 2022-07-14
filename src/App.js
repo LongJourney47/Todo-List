@@ -11,9 +11,6 @@ const App = () => {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // const [data, setData] = useState([]); 
-  // const [toggle, setToggle] = useState(false); 
-
   const baseUrl = 'https://api.airtable.com/v0/'
   const table = 'Default'
 
