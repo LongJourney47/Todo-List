@@ -24,7 +24,7 @@ if (complete === true) {
     <li className={style.ListItem}  style={{
       textDecoration: complete ? 'line-through' : 'none',
     }}>
-      <input type="checkbox"
+      <input className={style.ListCheck} type="checkbox"
      
       onClick={onCompleteHandler}
       ></input>
